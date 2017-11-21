@@ -1,30 +1,34 @@
 package com.krkcoders.appsjar.service
 
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import android.support.v4.content.LocalBroadcastManager
+import android.content.Intent
+
+
 
 class MessagingService : FirebaseMessagingService() {
 
+    private var broadcaster: LocalBroadcastManager? = null
+
+    override fun onCreate() {
+        broadcaster = LocalBroadcastManager.getInstance(this)
+    }
+
+
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
 
-        //todo display message in activity instead of logs
-        // title is UserName in this case
-        // body is a message content
         if (remoteMessage!!.notification != null) {
-            Log.e("message-tag", "Title: " + remoteMessage.notification.title)
-            Log.e("message-tag", "Body: " + remoteMessage.notification.body)
+           var broadcaster = LocalBroadcastManager.getInstance(baseContext)
+            val intent = Intent("Message")
+            intent.putExtra("Title", remoteMessage.notification.title)
+            intent.putExtra("Body", remoteMessage.notification.body)
+            broadcaster.sendBroadcast(intent)
         }
     }
 
     fun subscribeTopic() {
         //todo move subscribe function here from LoginActivity and call this function after sign in
         //FirebaseMessaging.getInstance().subscribeToTopic("global")
-    }
-
-    fun sendMessage(message: String) {
-        //todo post method call for messaging
-        // url: /api/notification/send/all
-        // params 1. username 2. message content
     }
 }

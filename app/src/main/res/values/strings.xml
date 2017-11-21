@@ -4,4 +4,8 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_in">SING IN</string>
+    <string name="typeMessage">Type message</string>
+
+
+    <string name="apiURl">http://192.168.43.156:8080/api/notification/send/all</string>
 </resources>
