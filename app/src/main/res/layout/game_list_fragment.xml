@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_recycler"
+    android:scrollbars="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GAMEEEE!!!!"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="532dp" />
-</android.support.constraint.ConstraintLayout>
+    android:layout_height="match_parent"/>
