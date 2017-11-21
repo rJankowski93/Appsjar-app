@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://E:\Works\appsjar-app\AppsJar.iml" filepath="E:\Works\appsjar-app\AppsJar.iml" />
+      <module fileurl="file://F:\work\Projects\appsjar-app\AppsJar.iml" filepath="F:\work\Projects\appsjar-app\AppsJar.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/appsjar-app.iml" filepath="$PROJECT_DIR$/appsjar-app.iml" />
     </modules>

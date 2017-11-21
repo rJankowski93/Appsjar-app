@@ -4,6 +4,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_in">SING IN</string>
+    <string name="action_download">Download</string>
     <string name="typeMessage">Type message</string>
 
 

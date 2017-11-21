@@ -5,6 +5,13 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#a4ca39</item>
         <item name="colorAccent">#a4ca39</item>
+
     </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">#a4ca39</item>
+    </style>
+
 
 </resources>
