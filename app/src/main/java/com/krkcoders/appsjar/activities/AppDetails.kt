@@ -9,7 +9,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.krkcoders.appsjar.R
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
-import com.krkcoders.appsjar.models.Game
+import com.krkcoders.appsjar.models.App
 import com.krkcoders.appsjar.service.PlayerConfig
 import io.realm.Realm
 
@@ -53,9 +53,9 @@ class AppDetails : YouTubeBaseActivity() {
         super.onStart()
     }
 
-    fun getGame(gameId: Int): Game? {
+    fun getGame(gameId: Int): App? {
         val realm = Realm.getDefaultInstance()
-        return realm.where(Game::class.java).equalTo("id", gameId).findFirst()
+        return realm.where(App::class.java).equalTo("id", gameId).findFirst()
     }
 
 }

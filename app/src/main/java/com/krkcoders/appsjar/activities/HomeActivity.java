@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.krkcoders.appsjar.R;
 import com.krkcoders.appsjar.adapters.HomeViewPagerAdapter;
 import com.krkcoders.appsjar.fragments.ChatFragment;
-import com.krkcoders.appsjar.fragments.GameListFragment;
-import com.krkcoders.appsjar.models.Game;
+import com.krkcoders.appsjar.fragments.AppListFragment;
+import com.krkcoders.appsjar.models.App;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -35,30 +35,30 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new GameListFragment(), "Games");
+        adapter.addFragment(new AppListFragment(), "Games");
         adapter.addFragment(new ChatFragment(), "Chat");
         viewPager.setAdapter(adapter);
     }
 
 
     private void setData(){
-        Game game1 = new Game();
-        game1.setName("Gra3");
-        game1.setImage(R.drawable.app_image_1);
-        game1.setId(3);
-        game1.setAppVersion("app v1");
-        game1.setYoutubeId("v=92GHdmnDiFE");
-        game1.setRating(2.0F);
+        App app1 = new App();
+        app1.setName("Gra3");
+        app1.setImage(R.drawable.app_image_1);
+        app1.setId(3);
+        app1.setAppVersion("app v1");
+        app1.setYoutubeId("v=92GHdmnDiFE");
+        app1.setRating(2.0F);
 
 
         Realm realm = Realm.getDefaultInstance();
 
         realm.beginTransaction();
-        realm.copyToRealm(game1);
+        realm.copyToRealm(app1);
         realm.commitTransaction();
 
 
-        final RealmResults<Game> games = realm.where(Game.class).findAll();
+        final RealmResults<App> games = realm.where(App.class).findAll();
         games.size();
     }
 
