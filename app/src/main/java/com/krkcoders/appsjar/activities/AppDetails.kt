@@ -33,7 +33,7 @@ class AppDetails : YouTubeBaseActivity() {
 
         (findViewById(R.id.name_app) as AppCompatTextView).text = game!!.name
         (findViewById(R.id.version_app) as AppCompatTextView).text = game.appVersion
-        ratingBar?.rating = game.rating
+        ratingBar?.rating = game.rating.toFloat()
 
 
 

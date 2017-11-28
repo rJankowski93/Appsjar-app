@@ -1,6 +1,5 @@
 package com.krkcoders.appsjar.models;
 
-import org.jetbrains.annotations.NotNull;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -10,18 +9,18 @@ public class App extends RealmObject {
 
     @Required
     @PrimaryKey
-    private Integer id;
+    private String id;
     private String name;
-    private int image;
+    private String img;
     private String appVersion;
     private String youtubeId;
-    private Float rating;
+    private Double rating;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,12 +32,12 @@ public class App extends RealmObject {
         this.name = name;
     }
 
-    public int getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getAppVersion() {
@@ -57,11 +56,11 @@ public class App extends RealmObject {
         this.youtubeId = youtubeId;
     }
 
-    public Float getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 }

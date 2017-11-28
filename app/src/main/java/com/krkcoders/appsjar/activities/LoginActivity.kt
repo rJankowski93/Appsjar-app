@@ -17,15 +17,10 @@ class LoginActivity : AppCompatActivity() {
         FirebaseMessaging.getInstance().subscribeToTopic("global")
         Realm.init(this)
 
-
-        val singnInButton = findViewById(R.id.email_sign_in_button) as Button
-        singnInButton.setOnClickListener{
+        val signInButton = findViewById(R.id.email_sign_in_button) as Button
+        signInButton.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
-
     }
-
-
-
 }
