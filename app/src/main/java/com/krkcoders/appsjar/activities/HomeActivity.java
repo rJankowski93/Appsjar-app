@@ -9,6 +9,10 @@ import com.krkcoders.appsjar.R;
 import com.krkcoders.appsjar.adapters.HomeViewPagerAdapter;
 import com.krkcoders.appsjar.fragments.ChatFragment;
 import com.krkcoders.appsjar.fragments.GameListFragment;
+import com.krkcoders.appsjar.models.Game;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+        //setData();
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -34,4 +39,26 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new ChatFragment(), "Chat");
         viewPager.setAdapter(adapter);
     }
+
+
+    private void setData(){
+        Game game1 = new Game();
+        game1.setName("Gra3");
+        game1.setImage(R.drawable.app_image_1);
+        game1.setId(3);
+
+
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+        realm.copyToRealm(game1);
+        realm.commitTransaction();
+
+
+        final RealmResults<Game> games = realm.where(Game.class).findAll();
+        games.size();
+    }
+
+
+
 }

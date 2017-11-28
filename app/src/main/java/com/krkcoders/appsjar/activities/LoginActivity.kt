@@ -6,6 +6,7 @@ import android.widget.Button
 import com.google.firebase.messaging.FirebaseMessaging
 import com.krkcoders.appsjar.R
 import android.content.Intent
+import io.realm.Realm
 
 
 class LoginActivity : AppCompatActivity() {
@@ -14,8 +15,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
         FirebaseMessaging.getInstance().subscribeToTopic("global")
+        Realm.init(this)
 
-        //FirebaseInstanceId.getInstance().getToken()
 
         val singnInButton = findViewById(R.id.email_sign_in_button) as Button
         singnInButton.setOnClickListener{

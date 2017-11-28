@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.krkcoders.appsjar.R;
+import com.krkcoders.appsjar.models.Game;
+
+import java.util.List;
 
 public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
 
-    private String[] captions;
-    private int[] imageIds;
+    private List<Game> games;
     private Listener listener;
 
     public static interface Listener {
@@ -29,9 +31,8 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
         }
     }
 
-    public CaptionedImagesAdapter(String[] captions, int[] imageIds){
-        this.captions = captions;
-        this.imageIds = imageIds;
+    public CaptionedImagesAdapter(List<Game> games){
+        this.games = games;
     }
 
     public void setListener(Listener listener) {
@@ -49,11 +50,11 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
     public void onBindViewHolder(ViewHolder holder, final int position) {
         CardView cardView = holder.cardView;
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
-        Drawable drawable = cardView.getResources().getDrawable(imageIds[position]);
+        Drawable drawable = cardView.getResources().getDrawable(games.get(position).getImage());
         imageView.setImageDrawable(drawable);
-        imageView.setContentDescription(captions[position]);
+        imageView.setContentDescription(games.get(position).getName());
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
-        textView.setText(captions[position]);
+        textView.setText(games.get(position).getName());
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,6 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
 
     @Override
     public int getItemCount() {
-        return captions.length;
+        return games.size();
     }
 }

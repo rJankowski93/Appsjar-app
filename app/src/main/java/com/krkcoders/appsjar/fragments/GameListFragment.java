@@ -13,6 +13,13 @@ import android.view.ViewGroup;
 import com.krkcoders.appsjar.R;
 import com.krkcoders.appsjar.activities.AppDetails;
 import com.krkcoders.appsjar.adapters.CaptionedImagesAdapter;
+import com.krkcoders.appsjar.models.Game;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class GameListFragment extends Fragment {
 
@@ -22,24 +29,18 @@ public class GameListFragment extends Fragment {
         RecyclerView gameRecycler = (RecyclerView)inflater.inflate(R.layout.game_list_fragment,
                 container, false);
 
-        String[] gameNames = new String[5];
-        for (int i = 0; i < gameNames.length; i++) {
-            gameNames[i] = "test";
-        }
+        Realm realm = Realm.getDefaultInstance();
+        final RealmResults<Game> games = realm.where(Game.class).findAll();
 
-        int[] gameImages = new int[5];
-        for (int i = 0; i < gameImages.length; i++) {
-            gameImages[i] = R.drawable.app_logo;
-        }
 
-        CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(gameNames, gameImages);
+        CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(games);
         gameRecycler.setAdapter(adapter);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         gameRecycler.setLayoutManager(layoutManager);
         adapter.setListener(new CaptionedImagesAdapter.Listener() {
             public void onClick(int position) {
                 Intent intent = new Intent(getActivity(), AppDetails.class);
-//                intent.putExtra(PizzaDetailActivity.EXTRA_PIZZANO, position);
+                intent.putExtra("gameId",games.get(position).getId());
                 getActivity().startActivity(intent);
             }
         });
