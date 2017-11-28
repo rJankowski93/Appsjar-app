@@ -46,6 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         game1.setName("Gra3");
         game1.setImage(R.drawable.app_image_1);
         game1.setId(3);
+        game1.setAppVersion("app v1");
+        game1.setYoutubeId("v=92GHdmnDiFE");
+        game1.setRating(2.0F);
 
 
         Realm realm = Realm.getDefaultInstance();

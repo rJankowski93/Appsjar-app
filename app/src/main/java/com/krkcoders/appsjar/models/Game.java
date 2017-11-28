@@ -6,10 +6,6 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-/**
- * Created by Dominik on 21.11.2017.
- */
-
 public class Game extends RealmObject {
 
     @Required
@@ -17,7 +13,9 @@ public class Game extends RealmObject {
     private Integer id;
     private String name;
     private int image;
-
+    private String appVersion;
+    private String youtubeId;
+    private Float rating;
 
     public int getId() {
         return id;
@@ -41,5 +39,29 @@ public class Game extends RealmObject {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(String appVersion) {
+        this.appVersion = appVersion;
+    }
+
+    public String getYoutubeId() {
+        return youtubeId;
+    }
+
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 }

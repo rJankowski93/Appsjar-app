@@ -9,9 +9,9 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.krkcoders.appsjar.R
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
+import com.krkcoders.appsjar.models.Game
 import com.krkcoders.appsjar.service.PlayerConfig
-
-
+import io.realm.Realm
 
 
 
@@ -25,14 +25,15 @@ class AppDetails : YouTubeBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_details_activity)
+        var game =  getGame(intent.getIntExtra("gameId",0))
 
-        //        button =  findViewById(R.id.you_tube_player_btn) as Button?;
+        //button =  findViewById(R.id.you_tube_player_btn) as Button?;
         youTubePlayerView = findViewById(R.id.youtube_player) as YouTubePlayerView?
         ratingBar = findViewById(R.id.rating) as RatingBar?
 
-        (findViewById(R.id.name_app) as AppCompatTextView).text = "Application 1" //TODO data from DB
-        (findViewById(R.id.version_app) as AppCompatTextView).text = "Application 1" //TODO data from DB
-        ratingBar?.rating = 2.0F //TODO data from DB
+        (findViewById(R.id.name_app) as AppCompatTextView).text = game!!.name
+        (findViewById(R.id.version_app) as AppCompatTextView).text = game.appVersion
+        ratingBar?.rating = game.rating
 
 
 
@@ -41,7 +42,7 @@ class AppDetails : YouTubeBaseActivity() {
             }
 
             override fun onInitializationSuccess(p0: YouTubePlayer.Provider?, youTubePlayer: YouTubePlayer?, p2: Boolean) {
-                youTubePlayer?.loadVideo("3LiubyYpEUk") //TODO data from DB
+                youTubePlayer?.loadVideo(game.youtubeId)
             }
         }
 //        button?.setOnClickListener { youTubePlayerView?.initialize(PlayerConfig.API_KEY, onInitializedListener); }
@@ -51,4 +52,10 @@ class AppDetails : YouTubeBaseActivity() {
         youTubePlayerView?.initialize(PlayerConfig.API_KEY, onInitializedListener)
         super.onStart()
     }
+
+    fun getGame(gameId: Int): Game? {
+        val realm = Realm.getDefaultInstance()
+        return realm.where(Game::class.java).equalTo("id", gameId).findFirst()
+    }
+
 }
