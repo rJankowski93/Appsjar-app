@@ -8,8 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.krkcoders.appsjar.R;
 import com.krkcoders.appsjar.adapters.HomeViewPagerAdapter;
 import com.krkcoders.appsjar.fragments.ChatFragment;
-import com.krkcoders.appsjar.fragments.GameListFragment;
-import com.krkcoders.appsjar.models.Game;
+import com.krkcoders.appsjar.fragments.AppListFragment;
+import com.krkcoders.appsjar.models.App;
+import com.krkcoders.appsjar.service.AppService;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         //setData();
+        new AppService().execute("http://172.20.10.3:8080/api/app/all");
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -35,30 +37,25 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new GameListFragment(), "Games");
+        adapter.addFragment(new AppListFragment(), "Games");
         adapter.addFragment(new ChatFragment(), "Chat");
         viewPager.setAdapter(adapter);
     }
 
 
     private void setData(){
-        Game game1 = new Game();
-        game1.setName("Gra29");
-        game1.setImage(R.drawable.app2);
-        game1.setId(9);
-        game1.setAppVersion("app v2");
-        game1.setYoutubeId("v=92GHdmnDiFE");
-        game1.setRating(4.0F);
-
-
+        App app = new App();
+        app.setName("Gra3");
+        //app1.setImage(R.drawable.app_image_1);
+        app.setId("3");
+        app.setAppVersion("app v1");
+        app.setYoutubeId("v=92GHdmnDiFE");
+        app.setRating(2.0D);
         Realm realm = Realm.getDefaultInstance();
-
         realm.beginTransaction();
-        realm.copyToRealm(game1);
+        realm.copyToRealmOrUpdate(app);
         realm.commitTransaction();
-
-
-        final RealmResults<Game> games = realm.where(Game.class).findAll();
+        final RealmResults<App> games = realm.where(App.class).findAll();
         games.size();
     }
 

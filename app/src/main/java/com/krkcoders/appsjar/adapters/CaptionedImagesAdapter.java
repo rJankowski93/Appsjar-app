@@ -13,13 +13,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.krkcoders.appsjar.R;
-import com.krkcoders.appsjar.models.Game;
+import com.krkcoders.appsjar.models.App;
 
 import java.util.List;
 
 public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
 
-    private List<Game> games;
+    private List<App> apps;
     private Listener listener;
 
     public static interface Listener {
@@ -34,8 +34,8 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
         }
     }
 
-    public CaptionedImagesAdapter(List<Game> games){
-        this.games = games;
+    public CaptionedImagesAdapter(List<App> apps){
+        this.apps = apps;
     }
 
     public void setListener(Listener listener) {
@@ -65,9 +65,9 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
 
 
         imageView.setImageBitmap(decodedByte);
-        imageView.setContentDescription(games.get(position).getName());
+        imageView.setContentDescription(apps.get(position).getName());
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
-        textView.setText(games.get(position).getName());
+        textView.setText(apps.get(position).getName());
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
 
     @Override
     public int getItemCount() {
-        return games.size();
+        return apps.size();
     }
 
 
