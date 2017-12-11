@@ -43,12 +43,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setData(){
         Game game1 = new Game();
-        game1.setName("Gra3");
-        game1.setImage(R.drawable.app_image_1);
-        game1.setId(3);
-        game1.setAppVersion("app v1");
+        game1.setName("Gra29");
+        game1.setImage(R.drawable.app2);
+        game1.setId(9);
+        game1.setAppVersion("app v2");
         game1.setYoutubeId("v=92GHdmnDiFE");
-        game1.setRating(2.0F);
+        game1.setRating(4.0F);
 
 
         Realm realm = Realm.getDefaultInstance();

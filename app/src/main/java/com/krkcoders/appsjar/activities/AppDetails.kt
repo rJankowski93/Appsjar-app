@@ -3,6 +3,7 @@ package com.krkcoders.appsjar.activities
 import android.os.Bundle
 import android.support.v7.widget.AppCompatTextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.RatingBar
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
@@ -19,6 +20,7 @@ class AppDetails : YouTubeBaseActivity() {
 
     var youTubePlayerView: YouTubePlayerView? = null
     var button: Button? = null
+    var imageView: ImageView? = null
     var onInitializedListener: YouTubePlayer.OnInitializedListener? = null
     var ratingBar: RatingBar? = null
 
@@ -30,6 +32,9 @@ class AppDetails : YouTubeBaseActivity() {
         //button =  findViewById(R.id.you_tube_player_btn) as Button?;
         youTubePlayerView = findViewById(R.id.youtube_player) as YouTubePlayerView?
         ratingBar = findViewById(R.id.rating) as RatingBar?
+        imageView = findViewById(R.id.imageView) as ImageView?
+        imageView!!.setImageResource(game!!.image)
+
 
         (findViewById(R.id.name_app) as AppCompatTextView).text = game!!.name
         (findViewById(R.id.version_app) as AppCompatTextView).text = game.appVersion

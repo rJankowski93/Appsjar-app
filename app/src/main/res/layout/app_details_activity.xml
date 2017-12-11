@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/defaultBackground"
+    android:background="@android:color/transparent"
     >
 
 
@@ -23,7 +23,7 @@
         android:gravity="center_horizontal"
         android:minHeight="20dp"
         android:text="Application 1"
-        android:textColor="@color/text"
+        android:textColor="@color/defaultBackground"
         android:textSize="20dp" />
 
     <android.support.v7.widget.AppCompatTextView
@@ -36,7 +36,7 @@
         android:gravity="center_horizontal"
         android:minHeight="20dp"
         android:text="ver. 2.1.0"
-        android:textColor="@color/text"
+        android:textColor="@color/defaultBackground"
         android:textSize="20dp" />
 
     <Button
