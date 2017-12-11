@@ -1,7 +1,9 @@
 package com.krkcoders.appsjar.activities
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.widget.AppCompatTextView
+import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -27,13 +29,15 @@ class AppDetails : YouTubeBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_details_activity)
-        var game =  getGame(intent.getIntExtra("gameId",0))
+        var game =  getGame(intent.getStringExtra("gameId"))
 
         //button =  findViewById(R.id.you_tube_player_btn) as Button?;
         youTubePlayerView = findViewById(R.id.youtube_player) as YouTubePlayerView?
         ratingBar = findViewById(R.id.rating) as RatingBar?
         imageView = findViewById(R.id.imageView) as ImageView?
-        imageView!!.setImageResource(game!!.image)
+        val decodedString = Base64.decode(game!!.getImg(), Base64.DEFAULT)
+        val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        imageView!!.setImageBitmap(decodedByte)
 
 
         (findViewById(R.id.name_app) as AppCompatTextView).text = game!!.name
@@ -58,7 +62,7 @@ class AppDetails : YouTubeBaseActivity() {
         super.onStart()
     }
 
-    fun getGame(gameId: Int): App? {
+    fun getGame(gameId: String): App? {
         val realm = Realm.getDefaultInstance()
         return realm.where(App::class.java).equalTo("id", gameId).findFirst()
     }
