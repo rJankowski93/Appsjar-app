@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         //setData();
-        new AppService().execute("http://172.20.10.3:8080/api/app/all");
+        new AppService().execute("http://192.168.43.156:8080/api/app/all");
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
